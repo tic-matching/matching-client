@@ -5,15 +5,18 @@ export default function Welcome(props){
 	return (
 		<Screen>
 			<Header>
-				<Title>Hello, world</Title>
 			</Header>
-			<CatchPhrase>すれ違う人と出会おう</CatchPhrase>
-			<Button>今すぐ始める =></Button>
+			<CatchPhrase>
+				<Title>~Hello, world~</Title>
+				ここにキャッチフレーズを入力
+			</CatchPhrase>
+			<Button>今すぐ始める</Button>
 		</Screen>
 	)
 }
 
 const Screen = styled.div`
+	font-family: ProximaNova, sans-serif;
 	position: relative;
 	background-color: blue;
 	display: block;
@@ -33,14 +36,15 @@ const Header = styled.div`
 
 const Title = styled.div`
 	color: #FFFFFF;
-	font-size: 20px;
+	font-size: 40px;
 	font-weight: 700;
-	padding: 10px 0 10px 30px;
+	border-bottom-color: #FFFFFF;
+	border-bottom-width: 1px;
 `;
 
 const CatchPhrase = styled.div`
 	color: #FFFFFF;
-	font-size: 40px;
+	font-size: 20px;
 	font-weight: 700;
 	padding: 100px;
 `;
@@ -48,6 +52,9 @@ const CatchPhrase = styled.div`
 const Button = styled.div`
 	position: absolute;
 	box-sizing: border-box;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
 	right: 50px;
 	bottom: 50px;
 	background-color: #83ccd2;
@@ -56,4 +63,9 @@ const Button = styled.div`
 	padding: 15px 30px;
 	border-radius: 100px;
 	cursor: pointer;
+	&:hover{
+		background-color: #005ead;
+		color: #FFFFFF;
+		transition: 200ms ease;
+	}
 `;
