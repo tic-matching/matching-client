@@ -1,0 +1,46 @@
+@startuml
+actor MainUser
+actor SomeUser
+databas Database
+
+== Resister User == 
+
+MainUser -> App : Input user info
+App -> Server : Send user info
+Server -> Database : Resister user info
+Database -> Server : ok
+Server -> App : ok
+App -> MainUser : Tell welcome
+
+== Send ==
+
+Server -> App : Send random user list
+App -> MainUser : Show random user list
+MainUser -> App : Like
+App -> Server : Like
+Server -> Database : Resist like
+ref over Database
+  * Resist sender.id in resister.senderLikeList
+  * Resist receiver.id in sender.receiverLikeList
+  sender : MainUser
+  receiver : SomeUser
+end ref
+
+Database -> Server : ok
+
+ref over Server
+  is matching?
+end ref
+
+Server -> App : ok
+App -> MainUser : ok
+
+== Receive ==
+Server -> SomeApp : Send notification
+SomeApp -> SomeUser : Notify
+SomeUser -> SomeApp : Get sender like list
+SomeApp -> Server : Get sender like list
+Server -> Database : Select sender like list
+Database -> Server : 
+
+@enduml
