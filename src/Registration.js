@@ -32,51 +32,53 @@ export class Registration extends React.Component {
         const doSubmit = (e) => this.doSubmit(e)
         const doChange = (e) => this.doChange(e)
         return (
-            <form onSubmit={doSubmit}>
-                <div><label>
-                    名前: <br />
-                    <input name='name'
-                        type='text'
-                        value={this.state.name}
-                        onChange={doChange} />
-                </label></div>
-                <div><label>
-                    年齢: <br />
-                    <input name='age'
-                        type='text'
-                        value={this.state.age}
-                        onChange={doChange} />
-                </label></div>
-                <div><label>
-                    性別: <br />
-                    <input name='gender'
-                        type='text'
-                        value={this.state.gender}
-                        onChange={doChange} />
-                </label></div>
-                <div><label>
-                    学部: <br />
-                    <input name='department'
-                        type='text'
-                        value={this.state.department}
-                        onChange={doChange} />
-                </label></div>
-                <div><label>
-                    パスワード: <br />
-                    <input name='password'
-                        type='text'
-                        value={this.state.password}
-                        onChange={doChange} />
-                </label></div>
-                <input type='submit' value='送信' />
-            </form>
+            <Container>
+                <form onSubmit={doSubmit}>
+                    <div><label>
+                        名前: <br />
+                        <input name='name'
+                            type='text'
+                            value={this.state.name}
+                            onChange={doChange} />
+                    </label></div>
+                    <div><label>
+                        年齢: <br />
+                        <input name='age'
+                            type='text'
+                            value={this.state.age}
+                            onChange={doChange} />
+                    </label></div>
+                    <div><label>
+                        性別: <br />
+                        <input name='gender'
+                            type='text'
+                            value={this.state.gender}
+                            onChange={doChange} />
+                    </label></div>
+                    <div><label>
+                        学部: <br />
+                        <input name='department'
+                            type='text'
+                            value={this.state.department}
+                            onChange={doChange} />
+                    </label></div>
+                    <div><label>
+                        パスワード: <br />
+                        <input name='password'
+                            type='text'
+                            value={this.state.password}
+                            onChange={doChange} />
+                    </label></div>
+                    <input type='submit' value='送信' />
+                </form>
+            </Container>
         )
     }
 }
 
 export default Registration
 
-const div = styled.div`
+const Container = styled.div`
 	font-family: ProximaNova, sans-serif;
     position: fixed;
     top: 50%;
