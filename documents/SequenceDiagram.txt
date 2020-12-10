@@ -1,7 +1,7 @@
 @startuml
 actor MainUser
 actor SomeUser
-databas Database
+database Database
 
 == Resister User == 
 
