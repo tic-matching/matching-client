@@ -1,0 +1,46 @@
+@startuml
+actor MainUser
+actor SomeUser
+database Database
+
+== ユーザ登録 == 
+
+MainUser -> App : ユーザ情報入力
+App -> Server : ユーザ情報送信
+Server -> Database : ユーザ情報登録
+Database -> Server : ok
+Server -> App : ok
+App -> MainUser : Welcome!
+
+== いいね送信 ==
+
+Server -> App : ユーザのリストを送信
+App -> MainUser : ユーザのリストを表示
+MainUser -> App : Like
+App -> Server : Like
+Server -> Database : Likeを登録
+ref over Database
+  * sender.id を resister.senderLikeList に追加
+  * receiver.id を sender.receiverLikeList に追加
+  sender : MainUser
+  receiver : SomeUser
+end ref
+
+Database -> Server : ok
+
+ref over Server
+  マッチングしたか？?
+end ref
+
+Server -> App : ok
+App -> MainUser : ok
+
+== 受信 ==
+Server -> SomeApp : Likeされたことを通知する
+SomeApp -> SomeUser : 通知を表示
+SomeUser -> SomeApp : senderLikeListを取得
+SomeApp -> Server : senderLikeListを取得
+Server -> Database : senderLikeListを取得
+Database -> Server : senderLikeListを送信
+
+@enduml
