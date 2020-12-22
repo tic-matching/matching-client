@@ -15,7 +15,7 @@ export default function Modal({
 		setVisibleModal(visible)
 	}, [visible])
 
-	if(!visible)
+	if(!visibleModal)
 		return null
 
 	return (
