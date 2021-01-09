@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 
+import {resisterUser} from "./connection/server";
+
 //複数テキストの入力コンポーネント
 export class Registration extends React.Component {
     constructor (props) {
@@ -23,8 +25,14 @@ export class Registration extends React.Component {
     //送信ボタンが押されたとき
     doSubmit (e) {
         e.preventDefault()
-        const j = JSON.stringify(this.state)
-        window.alert(j)
+        resisterUser({
+            name:  this.state.name,
+            age:   this.state.age,
+            gender: this.state.gender,
+            department: this.state.department,
+            password: this.state.password
+        }).then((res) => res.json()
+        ).then(json => console.log(json));
     }
     //画面の描画
     render () {
