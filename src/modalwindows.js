@@ -1,13 +1,21 @@
 import React from 'react';
 import Modal from 'react-modal';
+import styled from "styled-components";
 const customStyles = {
   content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    position: 'absolute',
+      top: '100px',
+      left: '450px',
+      right: '450px',
+      bottom: '400px',
+      border: '1px solid #ccc',
+      background: '#fff',
+      overflow: 'auto',
+      WebkitOverflowScrolling: 'touch',
+      borderRadius: '50px',
+      outline: 'none',
+      padding: '20px'
+
  }
 };
 
@@ -26,7 +34,7 @@ class ModalWindow extends React.Component {
     this.setState({modalIsOpen: true});
   }
   afterOpenModal() {
-    this.subtitle.style.color = '#f00';
+    this.subtitle.style.color = '#00DDC0';
   }
   closeModal() {
     this.setState({modalIsOpen: false});
@@ -34,7 +42,7 @@ class ModalWindow extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.openModal}>Open Modal!!</button>
+        <MakeButton onClick={this.openModal}>投稿</MakeButton>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -42,12 +50,36 @@ class ModalWindow extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <h2 ref={subtitle => this.subtitle = subtitle}>ModalWindow</h2>
-          <div>Opend</div>
-            <button onClick={this.closeModal}>close</button>
+          <h2 ref={subtitle => this.subtitle = subtitle}>投稿作成</h2>
+          <div>入力欄予定地1</div>
+
+
+          
+            <button onClick={this.closeModal}>×</button>
         </Modal>
       </div>
     );
   }
 }
 export default ModalWindow;
+
+const MakeButton = styled.div`
+	position: absolute;
+	box-sizing: border-box;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
+	right: 500px;
+	bottom: 50px;
+	background-color: #83ccd2;
+	width: 200px;
+	height: 50px;
+	padding: 15px 30px;
+	border-radius: 100px;
+	cursor: pointer;
+	&:hover{
+		background-color: #005ead;
+		color: #FFFFFF;
+		transition: 200ms ease;
+	}
+`;

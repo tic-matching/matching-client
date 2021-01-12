@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
 import ModalWindow from "./modalwindows";
-import Post from "./post";
+import Userinfo from "./userinfo";
 
 
 import {
@@ -23,7 +23,7 @@ export default function Welcome(props){
         <PostIcon></PostIcon>
         <HomeButton><Link to="/Timeline">ホーム</Link></HomeButton>
         <UserButton><Link to="/Usermatch">マッチング</Link></UserButton>
-        <Post/>
+        <Userinfo/>
         <ModalWindow/>
 			</Screen>
 	)
