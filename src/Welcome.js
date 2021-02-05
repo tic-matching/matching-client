@@ -1,17 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import {
+	BrowserRouter as Router,
+	Route,
+	Link,
+	Switch
+} from 'react-router-dom'
 
 export default function Welcome(props){
 	return (
-		<Screen>
-			<Header>
-			</Header>
-			<CatchPhrase>
-				<Title>~Hello, world~</Title>
-				ここにキャッチフレーズを入力
-			</CatchPhrase>
-			<Button>今すぐ始める</Button>
-		</Screen>
+			<Screen>
+				<Header>
+				</Header>
+				<CatchPhrase>
+					<Title>~Hello, world~</Title>
+					ここにキャッチフレーズを入力
+				</CatchPhrase>
+				<Button><Link to="/Registration">今すぐ始める</Link></Button>
+			</Screen>
 	)
 }
 
