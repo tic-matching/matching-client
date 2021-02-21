@@ -40,46 +40,69 @@ export class Registration extends React.Component {
         const doSubmit = (e) => this.doSubmit(e)
         const doChange = (e) => this.doChange(e)
         return (
-            <Container>
-                <form onSubmit={doSubmit}>
-                    <div><label>
-                        名前: <br />
-                        <input name='name'
-                            type='text'
-                            value={this.state.name}
-                            onChange={doChange} />
-                    </label></div>
-                    <div><label>
-                        年齢: <br />
-                        <input name='age'
-                            type='text'
-                            value={this.state.age}
-                            onChange={doChange} />
-                    </label></div>
-                    <div><label>
-                        性別: <br />
-                        <input name='gender'
-                            type='text'
-                            value={this.state.gender}
-                            onChange={doChange} />
-                    </label></div>
-                    <div><label>
-                        学部: <br />
-                        <input name='department'
-                            type='text'
-                            value={this.state.department}
-                            onChange={doChange} />
-                    </label></div>
-                    <div><label>
-                        パスワード: <br />
-                        <input name='password'
-                            type='text'
-                            value={this.state.password}
-                            onChange={doChange} />
-                    </label></div>
-                    <input type='submit' value='送信' />
-                </form>
-            </Container>
+            <div>
+                <Header/>    
+                <Container>
+                    <Title>アカウントの作成</Title>
+                    <form onSubmit={doSubmit}>
+                        <Group>
+                            <label>
+                                <ColumnName>名前</ColumnName>
+                                <StyledInput 
+                                    name='name'
+                                    type='text'
+                                    value={this.state.name}
+                                    onChange={doChange}
+                                />
+                            </label>
+                        </Group>
+                        <Group>
+                            <label>
+                                <ColumnName>年齢</ColumnName>
+                                <StyledInput
+                                    name='age'
+                                    type='text'
+                                    value={this.state.age}
+                                    onChange={doChange} />
+                            </label>
+                        </Group>
+                        <Group>
+                            <label>
+                                <ColumnName>性別</ColumnName>
+                                <StyledInput 
+                                    name='gender'
+                                    type='text'
+                                    value={this.state.gender}
+                                    onChange={doChange}
+                                />
+                            </label>
+                        </Group>
+                        <Group>
+                            <label>
+                                <ColumnName>学部</ColumnName>
+                                <StyledInput 
+                                    name='department'
+                                    type='text'
+                                    value={this.state.department}
+                                    onChange={doChange}
+                                />
+                            </label>
+                        </Group>
+                        <Group>
+                            <label>
+                                <ColumnName>パスワード</ColumnName>
+                                <StyledInput 
+                                    name='password'
+                                    type='text'
+                                    value={this.state.password}
+                                    onChange={doChange}
+                                />
+                            </label>
+                        </Group>
+                        <StyledButton type='submit' value='送信' />
+                    </form>
+                </Container>
+            </div>
         )
     }
 }
@@ -88,8 +111,58 @@ export default Registration
 
 const Container = styled.div`
 	font-family: ProximaNova, sans-serif;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: block;
+    width: 600px;
+    margin: 50px auto 20px auto;
+`;
+
+const StyledForm = styled.form`
+    display: block;
+    width: 600px;
+    margin: 0 auto;
+`;
+
+const Header = styled.div`
+    background-color: #000000;
+    width: 100%;
+    height: 50px;
+`;
+
+const Title = styled.h1`
+    text-align: center;
+    color: #333;
+    margin: 0 0 50px 0;
+`;
+
+const Group = styled.div`
+    width: 100%;
+    margin: 10px 10px 20px 10px;
+`;
+
+const ColumnName = styled.div`
+    font-size: 14px;
+`;
+
+const StyledInput = styled.input`
+    background-color: #fafbfc;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border: solid #dadce0 1px;
+    border-radius: 4px;
+`;
+
+const StyledButton = styled.input`
+    color: #FFFFFF;
+    background-color: #1074e7;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover{
+        background-color: #0366d6;
+    }
 `;
