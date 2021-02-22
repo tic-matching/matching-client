@@ -8,6 +8,7 @@ import {
 
 import Welcome from "./Welcome";
 import Registration from "./Registration";
+import Login from "./Login";
 import Chat from "./Chat";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <Router>
         <Route exact path="/" component={Welcome}></Route>
         <Route path="/Registration" component={Registration}></Route>
+        <Route path="/Login" component={Login}></Route>
         <Route path="/Chat" component={Chat}></Route>
     </Router>
   );
