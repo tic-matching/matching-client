@@ -10,10 +10,11 @@ export class Registration extends React.Component {
         super(props)
         //状態を初期化
         this.state = {
+            mail: '',
             name:  '',
             age:   '',
             gender: '',
-            department: '',
+            faculty: '',
             password: ''
         }
     }
@@ -27,10 +28,11 @@ export class Registration extends React.Component {
     doSubmit (e) {
         e.preventDefault()
         resisterUser({
+            userid: this.state.mail,
             name:  this.state.name,
             age:   this.state.age,
             gender: this.state.gender,
-            department: this.state.department,
+            faculty: this.state.faculty,
             password: this.state.password
         }).then((res) => res.json()
         ).then(json => console.log(json));
@@ -59,6 +61,16 @@ export class Registration extends React.Component {
                         </Group>
                         <Group>
                             <label>
+                                <ColumnName>メールアドレス</ColumnName>
+                                <StyledInput
+                                    name='mail'
+                                    type='text'
+                                    value={this.state.mail}
+                                    onChange={doChange} />
+                            </label>
+                        </Group>
+                        <Group>
+                            <label>
                                 <ColumnName>年齢</ColumnName>
                                 <StyledInput
                                     name='age'
@@ -82,9 +94,9 @@ export class Registration extends React.Component {
                             <label>
                                 <ColumnName>学部</ColumnName>
                                 <StyledInput 
-                                    name='department'
+                                    name='faculty'
                                     type='text'
-                                    value={this.state.department}
+                                    value={this.state.faculty}
                                     onChange={doChange}
                                 />
                             </label>

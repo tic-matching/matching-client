@@ -1,7 +1,7 @@
 const SERVER_URL = "http://localhost:3000";
 
 export async function resisterUser(data){
-	const url = SERVER_URL + "/users";
+	const url = SERVER_URL + "/InsertProfile";
 	const option = {
     method: 'POST',
     mode: 'cors',
@@ -18,7 +18,7 @@ export async function resisterUser(data){
 }
 
 export async function login(data){
-    const url = SERVER_URL + "/login";
+    const url = SERVER_URL + "/GetKey";
     const option = {
     method: 'POST',
     mode: 'cors',

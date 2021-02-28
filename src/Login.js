@@ -42,7 +42,7 @@ export class Login extends React.Component {
                     <StyledForm onSubmit={doSubmit}>
                         <Group>
                             <label>
-                                <ColumnName>名前</ColumnName>
+                                <ColumnName>メールアドレス</ColumnName>
                                 <StyledInput 
                                     name='name'
                                     type='text'
