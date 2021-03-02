@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Modal from "react-modal";
 import ModalWindow from "./modalwindows";
 import Post from "./post";
 
@@ -11,8 +10,6 @@ import {
 	Link,
 	Switch
 } from 'react-router-dom'
-
-Modal.setAppElement("#root");
 
 export default function Welcome(props){
 	return (
