@@ -1,19 +1,16 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 
-import {resisterUser} from "./lib/server";
+import {login} from "./lib/server";
 import Header from "./components/header";
 
 //複数テキストの入力コンポーネント
-export class Registration extends React.Component {
+export class Login extends React.Component {
     constructor (props) {
         super(props)
         //状態を初期化
         this.state = {
             name:  '',
-            age:   '',
-            gender: '',
-            department: '',
             password: ''
         }
     }
@@ -26,11 +23,8 @@ export class Registration extends React.Component {
     //送信ボタンが押されたとき
     doSubmit (e) {
         e.preventDefault()
-        resisterUser({
+        login({
             name:  this.state.name,
-            age:   this.state.age,
-            gender: this.state.gender,
-            department: this.state.department,
             password: this.state.password
         }).then((res) => res.json()
         ).then(json => console.log(json));
@@ -42,10 +36,10 @@ export class Registration extends React.Component {
         const doChange = (e) => this.doChange(e)
         return (
             <div>
-                <Header login={true}/>    
+                <Header signin={true}/>    
                 <Container>
-                    <Title>アカウントの作成</Title>
-                    <form onSubmit={doSubmit}>
+                    <Title>Login</Title>
+                    <StyledForm onSubmit={doSubmit}>
                         <Group>
                             <label>
                                 <ColumnName>名前</ColumnName>
@@ -53,38 +47,6 @@ export class Registration extends React.Component {
                                     name='name'
                                     type='text'
                                     value={this.state.name}
-                                    onChange={doChange}
-                                />
-                            </label>
-                        </Group>
-                        <Group>
-                            <label>
-                                <ColumnName>年齢</ColumnName>
-                                <StyledInput
-                                    name='age'
-                                    type='text'
-                                    value={this.state.age}
-                                    onChange={doChange} />
-                            </label>
-                        </Group>
-                        <Group>
-                            <label>
-                                <ColumnName>性別</ColumnName>
-                                <StyledInput 
-                                    name='gender'
-                                    type='text'
-                                    value={this.state.gender}
-                                    onChange={doChange}
-                                />
-                            </label>
-                        </Group>
-                        <Group>
-                            <label>
-                                <ColumnName>学部</ColumnName>
-                                <StyledInput 
-                                    name='department'
-                                    type='text'
-                                    value={this.state.department}
                                     onChange={doChange}
                                 />
                             </label>
@@ -101,26 +63,31 @@ export class Registration extends React.Component {
                             </label>
                         </Group>
                         <StyledButton type='submit' value='送信' />
-                    </form>
+                    </StyledForm>
                 </Container>
             </div>
         )
     }
 }
 
-export default Registration
+export default Login;
 
 const Container = styled.div`
 	font-family: ProximaNova, sans-serif;
     display: block;
-    width: 600px;
+    width: 350px;
     margin: 50px auto 20px auto;
 `;
 
 const StyledForm = styled.form`
     display: block;
-    width: 600px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px 30px;
     margin: 0 auto;
+
+    border: solid #e5e5e5 1px;
+    border-radius: 4px;
 `;
 
 const Title = styled.h1`
@@ -142,22 +109,22 @@ const StyledInput = styled.input`
     background-color: #fafbfc;
     box-sizing: border-box;
     width: 100%;
-    padding: 10px;
+    padding: 7px;
     border: solid #dadce0 1px;
     border-radius: 4px;
 `;
 
 const StyledButton = styled.input`
-    color: #FFFFFF;
-    background-color: #1074e7;
+    color: white;
+    background-color: #2ea44f;
     box-sizing: border-box;
     width: 100%;
-    height: 50px;
-    padding: 10px;
+    height: 30px;
+    padding: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     &:hover{
-        background-color: #0366d6;
+        background-color: #2c974b;
     }
 `;
