@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 
+import Database from "./lib/database";
 import {resisterUser} from "./lib/server";
 import Header from "./components/header";
 
@@ -28,14 +29,17 @@ export class Registration extends React.Component {
     doSubmit (e) {
         e.preventDefault()
         resisterUser({
-            userid: this.state.mail,
+            mail: this.state.mail,
             name:  this.state.name,
             age:   this.state.age,
             gender: this.state.gender,
             faculty: this.state.faculty,
             password: this.state.password
-        }).then((res) => res.json()
-        ).then(json => console.log(json));
+        }).then((res) => res.text()
+        ).then(text => {
+            Database.setData({userid: text})
+            this.props.history.push("Timeline");
+        });
     }
     //画面の描画
     render () {

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 
+import Database from "./lib/database";
 import {login} from "./lib/server";
 import Header from "./components/header";
 
@@ -10,7 +11,7 @@ export class Login extends React.Component {
         super(props)
         //状態を初期化
         this.state = {
-            name:  '',
+            mail:  '',
             password: ''
         }
     }
@@ -24,10 +25,13 @@ export class Login extends React.Component {
     doSubmit (e) {
         e.preventDefault()
         login({
-            name:  this.state.name,
+            mail:  this.state.mail,
             password: this.state.password
-        }).then((res) => res.json()
-        ).then(json => console.log(json));
+        }).then((res) => res.text()
+        ).then(text => {
+            Database.setData({userid: text});
+            this.props.history.push("Timeline");
+        }).catch(() => {console.log("Miss match!!")});
     }
     //画面の描画
     render () {
@@ -44,9 +48,9 @@ export class Login extends React.Component {
                             <label>
                                 <ColumnName>メールアドレス</ColumnName>
                                 <StyledInput 
-                                    name='name'
+                                    name='mail'
                                     type='text'
-                                    value={this.state.name}
+                                    value={this.state.mail}
                                     onChange={doChange}
                                 />
                             </label>
