@@ -6,17 +6,17 @@ import {
 	Link,
 	Switch
 } from 'react-router-dom'
-import Header from "./components/header";
 
 export default function Welcome(props){
 	return (
 			<Screen>
-				<Header login={true} signin={true}/>
+				<Header>
+				</Header>
 				<CatchPhrase>
 					<Title>~Hello, world~</Title>
 					ここにキャッチフレーズを入力
 				</CatchPhrase>
-				<Button><Link to="/Registration">今すぐ始める</Link></Button>
+				<Button><Link to="/Timeline">今すぐ始める</Link></Button>
 			</Screen>
 	)
 }
@@ -33,6 +33,12 @@ const Screen = styled.div`
 `;
 
 const background = styled.div``;
+
+const Header = styled.div`
+	background-color: #000000;
+	width: 100%;
+	height: 50px;
+`;
 
 const Title = styled.div`
 	color: #FFFFFF;
