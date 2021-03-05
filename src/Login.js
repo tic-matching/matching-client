@@ -27,8 +27,7 @@ export class Login extends React.Component {
         login({
             mail:  this.state.mail,
             password: this.state.password
-        }).then((res) => res.text()
-        ).then(text => {
+        }).then(text => {
             Database.setData({userid: text});
             this.props.history.push("Timeline");
         }).catch(() => {console.log("Miss match!!")});

@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import ModalWindow from "./modalwindows";
 import Userinfo from "./userinfo";
-
+import Database from "./lib/database";
+import {getUser} from "./lib/user";
 
 import {
   BrowserRouter as Router,
@@ -12,6 +13,15 @@ import {
 } from 'react-router-dom'
 
 export default function Welcome(props){
+
+    const [user, setUser] = useState(null);
+
+    useEffect(async () =>{
+      const data = await getUser(Database.data.userid);
+      setUser(data);
+      console.log(data);
+    }, [])
+
     return (
         <Screen>
           <Blank></Blank>
