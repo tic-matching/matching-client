@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import ModalWindow from "./modalwindows";
 import Post from "./post";
+import Database from "./lib/database";
+import { getPost, addPost } from "./lib/post";
 
 
 import {
@@ -9,9 +11,16 @@ import {
 	Route,
 	Link,
 	Switch
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 export default function Welcome(props){
+	const [posts, setPosts] = useState([]);
+	useEffect(async () =>{
+		const data = await getPost(Database.data.userid);
+		setPosts(data);
+		console.log(body);
+		// addPost(Database.data.userid, "テストテスト"); <= postの追加
+	}, []);
 	return (
 			<Screen>
         <Blank></Blank>
