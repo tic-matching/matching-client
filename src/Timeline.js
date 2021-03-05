@@ -18,7 +18,7 @@ export default function Welcome(props){
 	useEffect(async () =>{
 		const data = await getPost(Database.data.userid);
 		setPosts(data);
-		console.log(body);
+		console.log(data);
 		// addPost(Database.data.userid, "テストテスト"); <= postの追加
 	}, []);
 	return (
