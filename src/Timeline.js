@@ -1,37 +1,44 @@
 import React, {useState, useEffect} from "react";
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
-import ModalWindow from "./modalwindows";
-import Post from "./post";
+
 import Database from "./lib/database";
 import { getPost, addPost } from "./lib/post";
+import ModalWindow from "./modalwindows";
+import Post from "./post";
 
 
-import {
-	BrowserRouter as Router,
-	Route,
-	Link,
-	Switch
-} from 'react-router-dom';
-
-export default function Welcome(props){
+export default function Timeline(props){
 	const [posts, setPosts] = useState([]);
 	useEffect(async () =>{
 		const data = await getPost(Database.data.userid);
-		setPosts(data);
-		console.log(data);
+		const list = Object.keys(data).map(k => {
+			return {
+				id: k,
+				...data[k]
+			}
+		})
+		setPosts(list);
+		console.log("Posts:", list);
 		// addPost(Database.data.userid, "テストテスト"); <= postの追加
 	}, []);
 	return (
-			<Screen>
-        <Blank></Blank>
-        <BlankR></BlankR>
-        <PostBack></PostBack>
-        <PostIcon></PostIcon>
-        <HomeButton><Link to="/Timeline">ホーム</Link></HomeButton>
-        <UserButton><Link to="/Usermatch">マッチング</Link></UserButton>
-        <Post/>
-        <ModalWindow/>
-			</Screen>
+		<Screen>
+			<Blank></Blank>
+			<BlankR></BlankR>
+			<PostBack></PostBack>
+			<PostIcon></PostIcon>
+			<HomeButton><Link to="/Timeline">ホーム</Link></HomeButton>
+			<UserButton><Link to="/Usermatch">マッチング</Link></UserButton>
+			{posts.map((p, i) =>(
+				<Post
+					key={i}
+					name={p.userid}
+					text={p.text}
+				/>
+			))}
+			<ModalWindow/>
+		</Screen>
 	)
 }
 
@@ -136,39 +143,39 @@ const UserButton = styled.div`
 `;
 
 const Blank = styled.div`
-  position: absolute;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  background-color: #EEEEF4;
-  width: 400px;
-  height: 1000px;
+	position: absolute;
+	box-sizing: border-box;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
+	background-color: #EEEEF4;
+	width: 400px;
+	height: 1000px;
 `;
 
 const BlankR = styled.div`
-  position: absolute;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  background-color: #EEEEF4;
-  right: 0px;
-  width: 400px;
-  height: 1000px;
+	position: absolute;
+	box-sizing: border-box;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
+	background-color: #EEEEF4;
+	right: 0px;
+	width: 400px;
+	height: 1000px;
 `;
 
 const PostIcon = styled.div`
-  position: absolute;
-  box-sizing: border-box;
-  background_color: #000000;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  top: 100px;
-  height: 50px;
-  left: 500px;
-  right: 500px;
+	position: absolute;
+	box-sizing: border-box;
+	background_color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
+	top: 100px;
+	height: 50px;
+	left: 500px;
+	right: 500px;
 `;
 
 const PostText = styled.div`
@@ -179,26 +186,26 @@ const PostText = styled.div`
 `;
 
 const PostBack= styled.div`
-  position: absolute;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  background-color: #FFFFFF;
-  right: 400px;
-  left: 400px;
-  height: 1000px;
+	position: absolute;
+	box-sizing: border-box;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
+	background-color: #FFFFFF;
+	right: 400px;
+	left: 400px;
+	height: 1000px;
 `;
 
 const ModalBack= styled.div`
-  position: absolute;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  background-color: #00FFFF;
-  right: 400px;
-  left: 400px;
-  height: 1000px;
-  z-index: 2;
+	position: absolute;
+	box-sizing: border-box;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
+	background-color: #00FFFF;
+	right: 400px;
+	left: 400px;
+	height: 1000px;
+	z-index: 2;
 `;
