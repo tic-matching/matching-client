@@ -1,31 +1,27 @@
 import React from 'react';
 import styled from "styled-components";
 
-class Post extends React.Component {
-  constructor(props) {
-    super(props);
+class PostRead extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      postText: "notext",
+      postName: "testuser"
+    };
+    //this.postIcon = this.postIcon.bind(this);
+    //this.postText = this.postText.bind(this);
+    //this.postName = this.postName.bind(this);
   }
 
   render() {
     return (
-      <Container>
-        <PostBackLine></PostBackLine>
-        <PostBackCover></PostBackCover>
-        <PostUser>{this.props.name}</PostUser>
-        <PostText>{this.props.text}</PostText>
-        <PostIcon></PostIcon>
-      </Container>
+      <div>
+        <PostReader>もっと読み込む</PostReader>
+      </div>
     );
   }
 }
-export default Post;
-
-const Container = styled.div`
-  position: relative;
-  width: 100%;
-  height: 150px;
-  border-bottom: 1px solid #ccc;
-`;
+export default PostRead;
 
 const PostIcon = styled.div`
   position: absolute;
@@ -34,10 +30,10 @@ const PostIcon = styled.div`
   font-weight: 600;
   text-align: center;
   background-color: #00DDDD;
-  top: 15px;
-  left: 15px;
-  height: 70px;
-  width: 70px;
+  top: 25px;
+  right: 550px;
+  left: 20px;
+  height: 65px;
 `;
 
 const PostText = styled.div`
@@ -47,8 +43,10 @@ const PostText = styled.div`
   font-weight: 100;
   text-align: left;
   background-color: #FFFFFF;
-  top: 35%;
-  left: 18%;
+  top: 60px;
+  right: 20px;
+  left: 100px;
+  height: 124px;
 `;
 
 const PostUser = styled.div`
@@ -58,23 +56,28 @@ const PostUser = styled.div`
   font-weight: 1000;
   text-align: left;
   background-color: #FFFFFF;
-  top: 12.5%;
+  top: 25px;
   right: 20px;
-  left: 18%;
+  left: 100px;
+  height: 50px;
 `;
 
-const PostBackCover= styled.div`
+const PostReader= styled.div`
   position: relative;
   box-sizing: border-box;
   font-size: 16px;
   font-weight: 600;
   text-align: center;
   background-color: #FFFFFF;
-  right: 0;
-  left: 0;
-  margin:auto;
-  height: 199px;
-  max-height: 500px;
+  color: #000000;
+  right: 400px;
+  left: 0px;
+  height: 75px;
+  &:hover{
+		background-color: #335ead;
+		color: #FFFFFF;
+		transition: 200ms ease;
+	}
 `;
 
 const PostBackLine= styled.div`
