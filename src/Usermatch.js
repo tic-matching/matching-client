@@ -1,29 +1,26 @@
 import React from "react";
+import { Link } from 'react-router-dom'
+import Modal from "react-modal";
 import styled from "styled-components";
+
 import ModalWindow from "./modalwindows";
 import Userinfo from "./userinfo";
 
+Modal.setAppElement("#root");
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom'
-
-export default function Welcome(props){
-    return (
-        <Screen>
-          <Blank></Blank>
-          <BlankR></BlankR>
-          <PostBack></PostBack>
-          <PostIcon></PostIcon>
-          <HomeButton><Link to="/Timeline">ホーム</Link></HomeButton>
-          <UserButton><Link to="/Usermatch">マッチング</Link></UserButton>
-          <Userinfo/>
-          <ModalWindow/>
-        </Screen>
-    )
+export default function Usermatch(props){
+  return (
+    <Screen>
+      <Blank></Blank>
+      <BlankR></BlankR>
+      <PostBack></PostBack>
+      <PostIcon></PostIcon>
+      <HomeButton><Link to="/Timeline">ホーム</Link></HomeButton>
+      <UserButton><Link to="/Usermatch">マッチング</Link></UserButton>
+      <Userinfo/>
+      <ModalWindow/>
+    </Screen>
+  )
 }
 
 const Screen = styled.div`
