@@ -35,8 +35,7 @@ export class Registration extends React.Component {
             gender: this.state.gender,
             faculty: this.state.faculty,
             password: this.state.password
-        }).then((res) => res.text()
-        ).then(text => {
+        }).then(text => {
             Database.setData({userid: text})
             this.props.history.push("Timeline");
         });

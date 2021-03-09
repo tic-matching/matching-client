@@ -4,29 +4,28 @@ import styled from "styled-components";
 class Post extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      postText: "notext",
-      postName: "testuser"
-    };
-    //this.postIcon = this.postIcon.bind(this);
-    //this.postText = this.postText.bind(this);
-    //this.postName = this.postName.bind(this);
   }
 
   render() {
     return (
-      <div>
-        <PostBackCover>
+      <Container>
         <PostBackLine></PostBackLine>
-        <PostUser>{this.props.postUser}</PostUser>
-        <PostText>{this.props.postText}</PostText>
+        <PostBackCover></PostBackCover>
+        <PostUser>{this.props.name}</PostUser>
+        <PostText>{this.props.text}</PostText>
         <PostIcon></PostIcon>
-        </PostBackCover>
-      </div>
+      </Container>
     );
   }
 }
 export default Post;
+
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+  height: 150px;
+  border-bottom: 1px solid #ccc;
+`;
 
 const PostIcon = styled.div`
   position: absolute;

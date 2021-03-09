@@ -14,7 +14,7 @@ export async function resisterUser(data){
     referrerPolicy: 'no-referrer',
     body: JSON.stringify(data) // 本文のデータ型は "Content-Type" ヘッダーと一致する必要があります
   }
-	return fetch(url, option);
+	return fetch(url, option).then(res => res.text()).then(text => text.slice(1, -1));
 }
 
 export async function login(data){
@@ -31,5 +31,5 @@ export async function login(data){
     referrerPolicy: 'no-referrer',
     body: JSON.stringify(data) // 本文のデータ型は "Content-Type" ヘッダーと一致する必要があります
   }
-    return fetch(url, option);
+    return fetch(url, option).then(res => res.text()).then(text => text.slice(1, -1));
 }
