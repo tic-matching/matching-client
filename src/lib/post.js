@@ -1,6 +1,7 @@
+const SERVER_URL = "http://localhost:3000";
+
 export function getPost(id){
-	const SERVER_URL = "http://localhost:3000";
-	const url = SERVER_URL + "/InsertProfile";
+	const url = SERVER_URL + "/GetPost";
 	const option = {
 		method: 'GET',
 		mode: 'cors',
@@ -11,7 +12,27 @@ export function getPost(id){
 		},
 		redirect: 'follow',
 		referrerPolicy: 'no-referrer',
-		body: JSON.stringify(id) // 本文のデータ型は "Content-Type" ヘッダーと一致する必要があります
+	}
+	return fetch(url, option).then(res => res.json());
+}
+
+export function addPost(id, text){
+	const url = SERVER_URL + "/InsertPost";
+	const option = {
+		method: 'POST',
+		mode: 'cors',
+		cache: 'no-cache',
+		credentials: 'same-origin',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		redirect: 'follow',
+		referrerPolicy: 'no-referrer',
+		body: JSON.stringify({
+			userid: id,
+			text: text,
+			time: Date.now()
+		})
 	}
 	return fetch(url, option);
 }
