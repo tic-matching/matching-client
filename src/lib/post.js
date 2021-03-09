@@ -1,5 +1,6 @@
+const SERVER_URL = "http://localhost:3000";
+
 export function getPost(id){
-	const SERVER_URL = "http://localhost:3000";
 	const url = SERVER_URL + "/InsertProfile";
 	const option = {
 		method: 'GET',
