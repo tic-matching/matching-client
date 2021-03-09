@@ -5,7 +5,9 @@ export default function UserInfo(props){
   return (
     <Container>
       <IconContainer>
-        <Icon />
+        <Icon
+          src={props.icon || "https://upload.wikimedia.org/wikipedia/commons/f/f3/Chromium_Material_Icon.png"}
+        />
       </IconContainer>
       <TextContainer>
         <NameContainer>
@@ -19,11 +21,12 @@ export default function UserInfo(props){
   );
 }
 
-export default Userinfo;
-
 const Container = styled.div`
+  display: flex;
+  background-color: #ccffcc;
   width: 100%;
-  height: 500px;
+  height: 200px;
+  border-bottom: 1px #333 solid;
 `;
 
 const IconContainer = styled.div`
@@ -38,14 +41,34 @@ const Icon = styled.img`
 `;
 
 const TextContainer = styled.div`
+  width: 700px;
+  height: 100%;
 `;
 
-const NameContainer = styled.div``;
+const NameContainer = styled.div`
+  width: 100%;
+  height: 40px;
+  margin: 20px 0 0 20px;
+`;
 
-const Name = styled.div``;
+const Name = styled.div`
+  font-weight: 700;
+  font-size: 20px;
+`;
 
-const SIContainer = styled.div``;
+const SIContainer = styled.div`
+  width: 100%;
+  height: 60px;
+  margin: 0 0 0 20px;
+`;
 
-const SelfIntroduction = styled.div``;
+const SelfIntroduction = styled.div`
+  color: #333;
+`;
+
+const ButtonContainer = styled.div`
+  width: 100%;
+  height: 30px;
+`;
 
 const Button = styled.div``;

@@ -1,15 +1,23 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from 'react-router-dom'
 import Modal from "react-modal";
 import styled from "styled-components";
 
 import Database from "./lib/database";
-import {get} from "./lib/server";
+import {getUser} from "./lib/user";
 import ModalWindow from "./modalwindows";
 import Userinfo from "./userinfo";
 import LeftMenu from "./components/LeftMenu";
 
 export default function Usermatch(props){
+  const [user, setUser] = useState(null);
+
+  useEffect(async () =>{
+    const user = await getUser(Database.data.userid);
+    console.log(user);
+    setUser(user);
+  }, [])
+
   return (
     <Screen>
       <Wrapper>
@@ -24,7 +32,11 @@ export default function Usermatch(props){
             }, ]}
           />
         </Left>
-        <Main></Main>
+        <Main>
+          <Userinfo
+            name={user?.name}
+          />
+        </Main>
       </Wrapper>
     </Screen>
   )
