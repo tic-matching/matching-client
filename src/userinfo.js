@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 
+import {GoodButton, BadButton} from "./components/Button";
+
 export default function UserInfo(props){
   return (
     <Container>
@@ -16,6 +18,18 @@ export default function UserInfo(props){
         <SIContainer>
           <SelfIntroduction>{props.introduction || "Hello!!"}</SelfIntroduction>
         </SIContainer>
+        <ButtonContainer>
+          <GoodButton 
+            style={{width: 100}}
+          >
+            Good!
+          </GoodButton>
+          <BadButton 
+            style={{width: 100}}
+          >
+            Bad
+          </BadButton>
+        </ButtonContainer>
       </TextContainer>
     </Container>
   );
@@ -41,6 +55,7 @@ const Icon = styled.img`
 `;
 
 const TextContainer = styled.div`
+  position: flex;
   width: 700px;
   height: 100%;
 `;
@@ -67,8 +82,11 @@ const SelfIntroduction = styled.div`
 `;
 
 const ButtonContainer = styled.div`
+  display: flex;
+  flex-basis: 200px;
+  flex-direction: row;
+  justify-content: space-around;
   width: 100%;
   height: 30px;
 `;
 
-const Button = styled.div``;

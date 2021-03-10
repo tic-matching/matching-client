@@ -64,6 +64,7 @@ const Main = styled.div`
 const Left = styled.div`
   float: left;
   background-color: #eeeef4;
+  box-sizing: border-box;
   width: 200px;
   height: 100%;
   padding-top: 100px;
