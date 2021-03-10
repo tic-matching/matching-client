@@ -1,132 +1,92 @@
 import React from 'react';
 import styled from "styled-components";
 
-class Userinfo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      postText: "notext",
-      postName: "testuser"
-    };
-    //this.postIcon = this.postIcon.bind(this);
-    //this.postText = this.postText.bind(this);
-    //this.postName = this.postName.bind(this);
-  }
+import {GoodButton, BadButton} from "./components/Button";
 
-  render() {
-    return (
-      <div>
-        <PostBackLine></PostBackLine>
-        <CoverPic>（カバー画像）</CoverPic>
-        <ProfileUser>ユーザー名</ProfileUser>
-        <ProfileText>自己紹介文(趣味・所属等)</ProfileText>
-        <ProfilePic>（アイコン画像）</ProfilePic>
-        <GoodButton>Good</GoodButton>
-        <BadButton>Bad</BadButton>
-      </div>
-    );
-  }
+export default function UserInfo(props){
+  return (
+    <Container>
+      <IconContainer>
+        <Icon
+          src={props.icon || "https://upload.wikimedia.org/wikipedia/commons/f/f3/Chromium_Material_Icon.png"}
+        />
+      </IconContainer>
+      <TextContainer>
+        <NameContainer>
+          <Name>{props.name}</Name>
+        </NameContainer>
+        <SIContainer>
+          <SelfIntroduction>{props.introduction || "Hello!!"}</SelfIntroduction>
+        </SIContainer>
+        <ButtonContainer>
+          <GoodButton 
+            style={{width: 100}}
+          >
+            Good!
+          </GoodButton>
+          <BadButton 
+            style={{width: 100}}
+          >
+            Bad
+          </BadButton>
+        </ButtonContainer>
+      </TextContainer>
+    </Container>
+  );
 }
-export default Userinfo;
 
-const ProfilePic = styled.div`
-  position: absolute;
-  box-sizing: border-box;
-  font-size: 15px;
-  font-weight: 600;
-  text-align: center;
-  background-color: #00DDDD;
-  right: 875px;
-  left: 415px;
-  height: 199px;
-`;
-
-const ProfileText = styled.div`
-  position: absolute;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-weight: 100;
-  text-align: left;
-  top: 60px;
-  right: 400px;
-  left: 575px;
-  height: 124px;
-`;
-
-const ProfileUser = styled.div`
-  position: absolute;
-  box-sizing: border-box;
-  font-size: 24px;
-  font-weight: 1000;
-  text-align: left;
-  top: 25px;
-  right: 400px;
-  left: 575px;
-  height: 50px;
-`;
-
-const CoverPic= styled.div`
-  position: absolute;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  background-color: #CCFFCC;
-  right: 400px;
-  left: 400px;
-  height: 199px;
-`;
-
-const PostBackLine= styled.div`
-  position: absolute;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  background-color: #000000;
-  right: 400px;
-  left: 400px;
+const Container = styled.div`
+  display: flex;
+  background-color: #ccffcc;
+  width: 100%;
   height: 200px;
+  border-bottom: 1px #333 solid;
 `;
 
-const GoodButton = styled.div`
-  position: absolute;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  right: 700px;
-  top: 135px;
-  background-color: #ffb6c1;
-  width: 100px;
-  height: 50px;
-  padding: 15px 30px;
-  border-radius: 100px;
-  cursor: pointer;
-  &:hover{
-    background-color: #dc143c;
-    color: #FFFFFF;
-    transition: 200ms ease;
-  }
+const IconContainer = styled.div`
+  width: 150px;
+  height: 100%;
 `;
 
-const BadButton = styled.div`
-  position: absolute;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  right: 500px;
-  top: 135px;
-  background-color: #87cefa;
-  width: 100px;
-  height: 50px;
-  padding: 15px 30px;
-  border-radius: 100px;
-  cursor: pointer;
-  &:hover{
-    background-color: #0000cd;
-    color: #FFFFFF;
-    transition: 200ms ease;
-  }
+const Icon = styled.img`
+  width: 120px;
+  height: 120px;
+  margin: 15px;
 `;
+
+const TextContainer = styled.div`
+  position: flex;
+  width: 700px;
+  height: 100%;
+`;
+
+const NameContainer = styled.div`
+  width: 100%;
+  height: 40px;
+  margin: 20px 0 0 20px;
+`;
+
+const Name = styled.div`
+  font-weight: 700;
+  font-size: 20px;
+`;
+
+const SIContainer = styled.div`
+  width: 100%;
+  height: 60px;
+  margin: 0 0 0 20px;
+`;
+
+const SelfIntroduction = styled.div`
+  color: #333;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-basis: 200px;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: 30px;
+`;
+
